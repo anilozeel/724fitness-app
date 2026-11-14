@@ -1,0 +1,97 @@
+/* ===================================================================
+   7/24 Fitness Club — Uygulama (giriş/kayıt/panel) stilleri
+   Marka dili: beyaz zemin, kırmızı #E8432A, koyu #16171B, Archivo başlık
+   (Tanıtım sitesinin temel stilleri index.html içindedir.)
+=================================================================== */
+
+:root {
+  --red: #E8432A;
+  --red-dark: #c9361f;
+  --dark: #16171B;
+  --muted: #6B6C73;
+  --line: #E6E6E8;
+  --soft: #F5F6F8;
+  --ok: #1aa35a;
+  --display: 'Archivo', system-ui, sans-serif;
+  --body: 'Instrument Sans', system-ui, sans-serif;
+}
+
+.app-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  background: var(--red); color: #fff; border: 0; border-radius: 999px;
+  font-family: var(--display); font-weight: 800; text-transform: uppercase;
+  letter-spacing: .04em; padding: 14px 26px; font-size: 16px; cursor: pointer;
+  transition: background .18s ease, color .18s ease;
+}
+.app-btn:hover { background: var(--dark); color: #fff; }
+.app-btn:disabled { opacity: .6; cursor: default; }
+.app-btn--block { width: 100%; }
+.app-btn--ghost { background: transparent; color: var(--dark); border: 1.5px solid var(--line); }
+.app-btn--ghost:hover { border-color: var(--red); color: var(--red); background: transparent; }
+
+/* ---------- Uygulama üst başlığı ---------- */
+.app-header {
+  position: sticky; top: 0; z-index: 50; background: #fff; border-bottom: 1px solid var(--line);
+}
+.app-header-inner {
+  max-width: 1600px; margin: 0 auto; padding: 12px clamp(16px,3vw,48px); min-height: 72px;
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+}
+.app-header img { height: 46px; width: auto; display: block; }
+.app-header .back { font-family: var(--display); font-weight: 800; text-transform: uppercase; font-size: 15px; color: var(--dark); letter-spacing: .02em; }
+.app-header .back:hover { color: var(--red); }
+
+/* ---------- Auth (giriş/kayıt) ---------- */
+.auth-wrap { min-height: calc(100vh - 73px); display: grid; place-items: center; padding: 48px 20px; background: var(--soft); }
+.auth-card { width: 100%; max-width: 440px; background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 40px 36px; box-shadow: 0 10px 40px rgba(0,0,0,.05); }
+.auth-card h1 { margin: 0 0 6px; font-family: var(--display); font-weight: 900; font-size: 34px; text-transform: uppercase; line-height: 1; color: var(--dark); }
+.auth-card .sub { color: var(--muted); font-size: 15px; margin-bottom: 26px; }
+.field { margin-bottom: 15px; }
+.field label { display: block; font-size: 13px; font-weight: 600; color: var(--muted); margin-bottom: 7px; }
+.field input {
+  width: 100%; padding: 15px 16px; background: #fff; border: 1px solid #DCDDE1;
+  border-radius: 10px; color: var(--dark); font-size: 15px; font-family: var(--body);
+  transition: border-color .15s;
+}
+.field input:focus { outline: none; border-color: var(--red); }
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.auth-foot { text-align: center; margin-top: 20px; color: var(--muted); font-size: 14px; }
+.auth-foot a { color: var(--red); font-weight: 700; }
+.alert { padding: 12px 15px; border-radius: 10px; font-size: 14px; margin-bottom: 18px; }
+.alert-error { background: #fdecea; border: 1px solid #f5c2bb; color: #b3281a; }
+.demo-box { margin-top: 22px; padding: 14px; background: var(--soft); border: 1px dashed var(--line); border-radius: 10px; font-size: 13px; color: var(--muted); line-height: 1.7; }
+.demo-box b { color: var(--dark); }
+
+/* ---------- Dashboard ---------- */
+.dash { display: grid; grid-template-columns: 250px 1fr; min-height: calc(100vh - 73px); background: var(--soft); }
+.dash-side { background: #fff; border-right: 1px solid var(--line); padding: 26px 16px; }
+.dash-side .side-cap { padding: 0 14px 14px; color: var(--muted); font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.dash-side .side-link { display: flex; align-items: center; gap: 11px; padding: 12px 14px; border-radius: 10px; color: var(--muted); font-weight: 600; font-size: 15px; cursor: pointer; margin-bottom: 3px; }
+.dash-side .side-link:hover { background: var(--soft); color: var(--dark); }
+.dash-side .side-link.active { background: var(--dark); color: #fff; }
+.dash-main { padding: 40px clamp(20px,4vw,48px); }
+.dash-main h1 { font-family: var(--display); font-weight: 900; font-size: 36px; text-transform: uppercase; line-height: 1; color: var(--dark); margin: 0 0 6px; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.dash-main .welcome { color: var(--muted); margin-bottom: 30px; font-size: 16px; }
+.stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 26px; }
+.stat { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 22px; }
+.stat .k { color: var(--muted); font-size: 13px; }
+.stat .v { font-family: var(--display); font-weight: 900; font-size: 32px; color: var(--dark); margin-top: 4px; line-height: 1; }
+.panel { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 28px; }
+.panel h2 { font-family: var(--display); font-weight: 800; font-size: 22px; text-transform: uppercase; margin: 0 0 14px; color: var(--dark); }
+.panel p { color: var(--muted); line-height: 1.7; }
+.badge { display: inline-block; padding: 5px 13px; border-radius: 999px; font-size: 12px; font-weight: 700; font-family: var(--display); text-transform: uppercase; letter-spacing: .05em; vertical-align: middle; }
+.badge-admin { background: var(--red); color: #fff; }
+.badge-member { background: #e7f6ee; color: var(--ok); }
+
+/* ---------- Loader ---------- */
+.loader { display: grid; place-items: center; min-height: 70vh; }
+.spinner { width: 40px; height: 40px; border: 3px solid var(--line); border-top-color: var(--red); border-radius: 50%; animation: spin .8s linear infinite; }
+
+@media (max-width: 860px) {
+  .dash { grid-template-columns: 1fr; }
+  .dash-side { display: none; }
+  .stat-row { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 520px) {
+  .row2, .stat-row { grid-template-columns: 1fr; }
+}

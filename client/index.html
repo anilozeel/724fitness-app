@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>7/24 Fitness Club Bahçeşehir</title>
+<meta name="description" content="Bahçeşehir'in 7/24 açık fitness kulübü. Antrenman, havuz, spa ve 60'tan fazla grup dersi tek çatı altında.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@100..900&family=Archivo+Expanded:wght@100..900&family=Instrument+Sans:wght@400..700&display=swap" rel="stylesheet">
+
+<style>
+  html,body{margin:0;background:#fff;color:#16171B;font-family:'Instrument Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  *{box-sizing:border-box}
+  a{color:inherit;text-decoration:none}
+  input,select,button{font:inherit}
+  html{scroll-behavior:smooth}
+  body{overflow-x:hidden}
+  :focus-visible{outline:2px solid #E8432A;outline-offset:3px;border-radius:2px}
+  .navlink{position:relative}
+  .navlink::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;background:#E8432A;transform:scaleX(0);transform-origin:left;transition:transform .2s ease}
+  .navlink:hover::after,.navlink:focus-visible::after{transform:scaleX(1)}
+  .navlink:hover{color:#E8432A}
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+  @keyframes drawerIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .hoverred:hover{color:#E8432A}
+  .btn{cursor:pointer;transition:background .18s ease,color .18s ease}
+  .btn--darkhover:hover{background:#16171B !important;color:#fff !important}
+  .btn--whitehover:hover{background:#fff !important;color:#16171B !important}
+  nav::-webkit-scrollbar{display:none}
+  .noscroll::-webkit-scrollbar{height:8px}
+  /* Archivo "condensed" look via Archivo Expanded is wide; we emulate narrow with letter-spacing + transform */
+  .display{font-family:'Archivo',system-ui,sans-serif;font-weight:900;letter-spacing:-.01em}
+  #boot{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#fff;z-index:9999;font-family:'Archivo',sans-serif}
+  #boot .logo{width:120px;height:120px;border-radius:16px;background:#E8432A;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:40px}
+</style>
+</head>
+<body>
+<div id="boot"><div class="logo">7/24</div></div>
+<div id="root"></div>
+<script type="module" src="/src/main.jsx"></script>
+</body>
+</html>

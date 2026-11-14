@@ -1,0 +1,14 @@
+{
+  "name": "724fitness-app",
+  "version": "1.0.0",
+  "private": true,
+  "description": "724 Fitness Club - Üyelik, rezervasyon, ödeme ve admin yönetim sistemi (React + Node.js)",
+  "scripts": {
+    "install:all": "cd server && npm install && cd ../client && npm install",
+    "seed": "cd server && npm run seed",
+    "dev:server": "cd server && npm run dev",
+    "dev:client": "cd client && npm run dev",
+    "build": "cd client && npm run build",
+    "start": "cd server && npm start"
+  }
+}
