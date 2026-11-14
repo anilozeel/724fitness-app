@@ -5,3 +5,10 @@ dist/
 data/
 npm-debug.log*
 .DS_Store
+
+# PHP yerel test ayarı (canlıda bulunmaz)
+php/api/config.local.php
+
+# Oluşturulan yükleme paketi
+deploy/
+*.zip
