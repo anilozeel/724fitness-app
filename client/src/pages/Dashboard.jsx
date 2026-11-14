@@ -1,11 +1,20 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useAuth } from '../lib/auth.jsx';
 import AppHeader from '../components/AppHeader.jsx';
+import ClassBooking from '../components/ClassBooking.jsx';
+import api from '../lib/api.js';
 
 export default function Dashboard() {
   const { user } = useAuth();
   const isAdmin = user?.role === 'admin';
   const [tab, setTab] = useState('overview');
+  const [bookingCount, setBookingCount] = useState(null);
+
+  // Üye için yaklaşan rezervasyon sayısını getir (genel bakış kartı)
+  useEffect(() => {
+    if (isAdmin) return;
+    api.get('/my/bookings').then((r) => setBookingCount(r.data.bookings.length)).catch(() => {});
+  }, [isAdmin]);
 
   const memberLinks = [
     { key: 'overview', ico: '🏠', label: 'Genel Bakış' },
@@ -65,7 +74,7 @@ export default function Dashboard() {
                 ) : (
                   <>
                     <div className="stat"><div className="k">Üyelik Durumu</div><div className="v" style={{ color: 'var(--ok)', fontSize: 24 }}>Aktif</div></div>
-                    <div className="stat"><div className="k">Kalan Ders</div><div className="v">8</div></div>
+                    <div className="stat" style={{ cursor: 'pointer' }} onClick={() => setTab('classes')}><div className="k">Yaklaşan Ders</div><div className="v">{bookingCount ?? '—'}</div></div>
                     <div className="stat"><div className="k">Bu Ay Katılım</div><div className="v">12</div></div>
                     <div className="stat"><div className="k">Bitiş Tarihi</div><div className="v" style={{ fontSize: 22 }}>28 Ara</div></div>
                   </>
@@ -82,7 +91,13 @@ export default function Dashboard() {
             </>
           )}
 
-          {tab !== 'overview' && (
+          {/* Üye: gerçek ders rezervasyonu */}
+          {!isAdmin && tab === 'classes' && (
+            <ClassBooking onCountChange={setBookingCount} />
+          )}
+
+          {/* Diğer sekmeler henüz geliştiriliyor */}
+          {tab !== 'overview' && !(!isAdmin && tab === 'classes') && (
             <div className="panel">
               <h2>🚧 Yakında</h2>
               <p>

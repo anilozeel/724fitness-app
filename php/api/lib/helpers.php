@@ -66,6 +66,22 @@ function require_auth(): array
     return $user;
 }
 
+/** Giriş yapılmışsa kullanıcıyı döndür, yoksa null (hata vermez) */
+function current_user_or_null(): ?array
+{
+    $cfg = app_config();
+    $token = bearer_token();
+    if (!$token) return null;
+
+    $payload = jwt_decode($token, $cfg['jwt_secret']);
+    if (!$payload || empty($payload['id'])) return null;
+
+    $stmt = db()->prepare('SELECT * FROM users WHERE id = ? LIMIT 1');
+    $stmt->execute([$payload['id']]);
+    $user = $stmt->fetch();
+    return ($user && (int)$user['is_active'] === 1) ? $user : null;
+}
+
 /** Belirli roller şart; değilse 403 */
 function require_role(array $user, array $roles): void
 {
@@ -74,12 +90,20 @@ function require_role(array $user, array $roles): void
     }
 }
 
-/** Kullanıcı dizisinden şifre alanını çıkarıp güvenli hale getir */
-function public_user(array $user): array
+/** Kullanıcıyı güvenli ve camelCase olarak dışarı ver (frontend ile uyum) */
+function public_user(array $u): array
 {
-    unset($user['password_hash']);
-    $user['is_active'] = (int)$user['is_active'];
-    return $user;
+    return [
+        'id'          => (int)$u['id'],
+        'firstName'   => $u['first_name'],
+        'lastName'    => $u['last_name'],
+        'email'       => $u['email'],
+        'phone'       => $u['phone'],
+        'role'        => $u['role'],
+        'isActive'    => (int)$u['is_active'],
+        'lastLoginAt' => $u['last_login_at'] ?? null,
+        'createdAt'   => $u['created_at'] ?? null,
+    ];
 }
 
 function app_token_for(array $user): string

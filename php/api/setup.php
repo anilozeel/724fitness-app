@@ -193,6 +193,37 @@ foreach ($classes as $c) {
 }
 $log[] = 'Dersler hazır.';
 
+// ---- Ders seansları (önümüzdeki 7 gün) ----
+$already = (int)$pdo->query('SELECT COUNT(*) AS c FROM class_sessions')->fetch()['c'];
+if ($already === 0) {
+    $classRows = $pdo->query('SELECT id, duration_min FROM gym_classes ORDER BY id ASC')->fetchAll();
+    $adminRow = $pdo->query('SELECT id FROM users WHERE role = "admin" ORDER BY id ASC')->fetch();
+    $trainerId = $adminRow ? (int)$adminRow['id'] : null;
+    $times = ['07:00', '09:30', '12:15', '17:30', '18:45', '20:00', '21:15'];
+    $rooms = ['Stüdyo A', 'Stüdyo B', 'Cycle Stüdyo'];
+    $n = count($classRows);
+
+    $ins = $pdo->prepare('INSERT INTO class_sessions (gym_class_id, trainer_id, starts_at, ends_at, capacity, booked_count, room, status, created_at, updated_at) VALUES (?, ?, ?, ?, 15, 0, ?, "scheduled", ?, ?)');
+    $count = 0;
+    for ($d = 1; $d <= 7; $d++) {
+        $base = strtotime("+$d day", strtotime(date('Y-m-d')));
+        foreach ($times as $ti => $time) {
+            $cls = $classRows[($d * 3 + $ti) % $n];
+            [$hh, $mm] = explode(':', $time);
+            $start = mktime((int)$hh, (int)$mm, 0, (int)date('n', $base), (int)date('j', $base), (int)date('Y', $base));
+            $end = $start + ((int)$cls['duration_min']) * 60;
+            $ins->execute([
+                (int)$cls['id'], $trainerId,
+                date('Y-m-d H:i:s', $start), date('Y-m-d H:i:s', $end),
+                $rooms[$ti % count($rooms)],
+                $now, $now,
+            ]);
+            $count++;
+        }
+    }
+    $log[] = "Ders seansları oluşturuldu ($count seans, 7 gün).";
+}
+
 $log[] = 'KURULUM TAMAM.';
 
 if ($isCli) {

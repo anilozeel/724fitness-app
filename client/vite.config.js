@@ -7,10 +7,11 @@ export default defineConfig({
   server: {
     port: 5173,
     host: true,
-    // Geliştirmede /api isteklerini backend'e (4000) yönlendir
+    // Geliştirmede /api isteklerini PHP backend'e (8080) yönlendir
+    // (php -S localhost:8080 php/api/index.php ile çalıştırın)
     proxy: {
       '/api': {
-        target: 'http://localhost:4000',
+        target: 'http://localhost:8080',
         changeOrigin: true,
       },
     },

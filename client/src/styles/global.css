@@ -83,6 +83,38 @@
 .badge-admin { background: var(--red); color: #fff; }
 .badge-member { background: #e7f6ee; color: var(--ok); }
 
+/* ---------- Ders Rezervasyonu ---------- */
+.alert-ok { background: #e7f6ee; border: 1px solid #a9ddc0; color: #148a4e; }
+.book-head { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-bottom: 18px; }
+.book-head h2 { font-family: var(--display); font-weight: 900; font-size: 26px; text-transform: uppercase; color: var(--dark); margin: 0; }
+.book-count { background: var(--dark); color: #fff; font-family: var(--display); font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: .04em; padding: 7px 14px; border-radius: 999px; }
+.book-day { margin-bottom: 22px; }
+.book-day-title { font-family: var(--display); font-weight: 800; font-size: 16px; text-transform: uppercase; letter-spacing: .03em; color: var(--muted); margin: 0 0 10px; }
+.book-list { display: flex; flex-direction: column; gap: 8px; }
+.book-row { display: grid; grid-template-columns: 64px 10px 1fr auto auto; align-items: center; gap: 14px; background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 14px 18px; }
+.book-row.is-booked { border-color: var(--red); background: #fff7f5; }
+.book-time { font-family: var(--display); font-weight: 900; font-size: 20px; color: var(--dark); }
+.book-dot { width: 10px; height: 10px; border-radius: 50%; }
+.book-info { display: flex; flex-direction: column; min-width: 0; }
+.book-name { font-family: var(--display); font-weight: 800; font-size: 18px; color: var(--dark); line-height: 1.1; }
+.book-meta { font-size: 13px; color: var(--muted); }
+.book-spots { font-size: 13px; font-weight: 600; color: var(--muted); white-space: nowrap; }
+.book-spots.full { color: var(--red); }
+.book-btn { background: var(--red); color: #fff; border: 0; border-radius: 999px; font-family: var(--display); font-weight: 800; text-transform: uppercase; font-size: 13px; letter-spacing: .04em; padding: 10px 18px; cursor: pointer; white-space: nowrap; transition: background .15s; }
+.book-btn:hover:not(:disabled) { background: var(--dark); }
+.book-btn.cancel { background: transparent; color: var(--red); border: 1.5px solid var(--red); }
+.book-btn.cancel:hover:not(:disabled) { background: var(--red); color: #fff; }
+.book-btn:disabled { opacity: .5; cursor: default; }
+
+@media (max-width: 620px) {
+  .book-row { grid-template-columns: 52px 1fr auto; grid-template-areas: 'time info btn' 'time spots btn'; row-gap: 4px; }
+  .book-dot { display: none; }
+  .book-time { grid-area: time; }
+  .book-info { grid-area: info; }
+  .book-spots { grid-area: spots; text-align: left; }
+  .book-btn { grid-area: btn; }
+}
+
 /* ---------- Loader ---------- */
 .loader { display: grid; place-items: center; min-height: 70vh; }
 .spinner { width: 40px; height: 40px; border: 3px solid var(--line); border-top-color: var(--red); border-radius: 50%; animation: spin .8s linear infinite; }

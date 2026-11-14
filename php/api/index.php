@@ -7,6 +7,7 @@
 require_once __DIR__ . '/lib/helpers.php';
 require_once __DIR__ . '/routes/public.php';
 require_once __DIR__ . '/routes/auth.php';
+require_once __DIR__ . '/routes/bookings.php';
 
 // ----- CORS -----
 $cfg = app_config();
@@ -45,6 +46,11 @@ try {
         case 'POST /auth/register': route_register(); break;
         case 'POST /auth/login':    route_login();    break;
         case 'GET /auth/me':        route_me();       break;
+
+        case 'GET /sessions':        route_sessions();    break;
+        case 'GET /my/bookings':     route_my_bookings(); break;
+        case 'POST /bookings':       route_book();        break;
+        case 'POST /bookings/cancel':route_cancel();      break;
 
         default:
             json_error('Bulunamadı: ' . $path, 404);
