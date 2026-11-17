@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /giris
+Disallow: /kayit
+Disallow: /panel
+Disallow: /api/
+
+Sitemap: https://www.724fitnessclub.com/sitemap.xml

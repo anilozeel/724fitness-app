@@ -44,7 +44,7 @@ const PAGES = [
 ];
 
 const FLAGS = {
-  home: ['hero', 'intro', 'areas', 'plans', 'app', 'classes', 'pt', 'banner'],
+  home: ['hero', 'intro', 'areas', 'plans', 'classes', 'schedule', 'app', 'pt', 'banner'],
   kulup: ['header', 'areas', 'intro', 'contact', 'banner'],
   uyelik: ['header', 'plans', 'faq', 'trial'],
   mobil: ['header', 'app', 'banner'],
@@ -56,7 +56,7 @@ const FLAGS = {
 
 const HEADS = {
   kulup: ['Kulüp', '7/24 Fitness Club Bahçeşehir', "Antrenman alanlarından havuza, stüdyolardan spa'ya kadar tüm olanaklar tek çatı altında."],
-  uyelik: ['Üyelik Paketleri', 'Üyeliğini seç', 'Tüm paketlerde 7/24 erişim, havuz, sauna, buhar odası ve grup dersleri dahil.'],
+  uyelik: ['Üyelik Paketleri', 'Üyeliğini seç', 'Tüm paketlerde kulüp erişimi, havuz, sauna, buhar odası ve grup dersleri dahil.'],
   mobil: ['Mobil Uygulama', 'Kulüp cebinde', 'QR ile giriş, ders rezervasyonu ve antrenman takibi tek uygulamada.'],
   dersler: ['Grup Dersleri', 'Ders programı', 'Her seviyeye uygun dersler, haftanın her günü.'],
   kampanyalar: ['Kampanyalar', 'Güncel fırsatlar', 'Üyelik ve kişisel antrenör paketlerinde dönemsel avantajlar.'],
@@ -64,7 +64,7 @@ const HEADS = {
   iletisim: ['İletişim', 'Bize ulaş', "Kulübü ziyaret et ya da 444 7 243'ü ara."]
 };
 
-const BASE_FEATURES = ['7/24 kulüp erişimi', 'Havuz, sauna ve buhar odası', 'Sınırsız grup dersi', 'Mobil uygulama ile QR giriş', 'Ücretsiz otopark'];
+const BASE_FEATURES = ['Sınırsız salon kullanımı', 'Havuz, sauna ve buhar odası', 'Sınırsız grup dersi', 'Mobil uygulama ile QR giriş', 'Ücretsiz otopark'];
 
 const CLASSES = [
   ['Reformer Pilates', 'Aletli pilates ile duruş, denge ve core gücünü geliştir.'],
@@ -80,7 +80,7 @@ const STUDIOS = { 'Aqua Fitness': 'Havuz', 'Spinning': 'Cycle Stüdyo', 'Reforme
 const TIMES = ['07:00', '09:30', '12:15', '17:30', '18:45', '20:00', '21:15'];
 
 const FAQ_DATA = [
-  ['Kulüp gerçekten 7/24 açık mı?', 'Evet. Mobil uygulamadaki QR kod ile günün her saati giriş yapabilirsin. Grup dersleri ve resepsiyon belirli saatlerde hizmet verir.'],
+  ['Kulüp hangi saatlerde açık?', 'Haftanın her günü hizmet veriyoruz. Güncel çalışma saatleri için bizi 444 7 243\'ten arayabilir ya da resepsiyona danışabilirsin.'],
   ['Ücretsiz deneme nasıl yapılır?', 'Formu doldurman yeterli. Danışmanımız seni arayıp uygun gün ve saati belirler.'],
   ['Grup dersleri üyeliğe dahil mi?', 'Tüm üyeliklerde sınırsızdır. Kontenjanlı dersler için uygulamadan rezervasyon yapılır.'],
   ['Havuz ve sauna ücretli mi?', 'Hayır. Havuz, sauna ve buhar odası tüm üyeliklere dahildir.'],
@@ -207,8 +207,8 @@ export default function Home() {
           <img src="img/hero.jpg" alt="7/24 Fitness Club Bahçeşehir salon" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
           <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(10,11,16,.5), rgba(10,11,16,.7))', pointerEvents: 'none' }} />
           <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', gap: 22, padding: '72px 20px 136px', color: '#fff', pointerEvents: 'none' }}>
-            <h1 style={{ margin: 0, maxWidth: 1100, fontFamily: DISPLAY, fontWeight: 900, fontSize: 'clamp(38px,7vw,96px)', lineHeight: .95, textTransform: 'uppercase', textWrap: 'balance' }}>Bahçeşehir'in 7/24 Açık Spor Salonu</h1>
-            <p style={{ margin: 0, fontSize: 'clamp(16px,1.7vw,24px)', maxWidth: 700, lineHeight: 1.5 }}>Fitness, havuz, grup dersleri ve kişisel antrenör tek çatı altında. Saat kaç olursa olsun, antrenmanını kendi saatine göre planla.</p>
+            <h1 style={{ margin: 0, maxWidth: 1100, fontFamily: DISPLAY, fontWeight: 900, fontSize: 'clamp(40px,7.5vw,104px)', lineHeight: .95, textTransform: 'uppercase', textWrap: 'balance' }}>Bahçeşehir Spor Salonu</h1>
+            <p style={{ margin: 0, fontSize: 'clamp(16px,1.7vw,24px)', maxWidth: 700, lineHeight: 1.5 }}>Fitness, havuz, grup dersleri ve kişisel antrenör tek çatı altında. Bahçeşehir'de hedeflerine bizimle ulaş.</p>
             <a href="#" onClick={e => go(trialPage, e, 'deneme')} className="btn btn--whitehover" style={{ ...pill, pointerEvents: 'auto', marginTop: 8, padding: '18px 56px', fontSize: 20, letterSpacing: '.08em' }}>Üye Ol</a>
           </div>
           <a href="#" onClick={e => { e.preventDefault(); const el = document.getElementById('kesfet'); if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' }); }} aria-label="Aşağı kaydır" style={{ position: 'absolute', left: '50%', bottom: 24, transform: 'translateX(-50%)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10, color: '#fff', fontWeight: 700, fontSize: 12, letterSpacing: '.2em' }}>KEŞFET<span style={{ width: 40, height: 40, border: '1.5px solid #fff', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', animation: 'bob 2s ease-in-out infinite' }}>↓</span></a>
@@ -229,7 +229,7 @@ export default function Home() {
         <section id="kesfet" style={{ maxWidth: 1700, margin: '0 auto', padding: 'clamp(72px,8vw,140px) clamp(16px,6vw,120px)' }}>
           <div style={{ maxWidth: 1000, margin: '0 auto 64px', textAlign: 'center', display: 'flex', flexDirection: 'column', gap: 28 }}>
             <h2 style={{ margin: 0, fontFamily: DISPLAY, fontWeight: 900, fontSize: 'clamp(40px,5vw,72px)', lineHeight: 1, textTransform: 'uppercase', textWrap: 'balance' }}>Antrenman, havuz ve spa tek kulüpte!</h2>
-            <p style={{ margin: 0, fontWeight: 600, fontSize: 'clamp(17px,1.4vw,21px)', lineHeight: 1.65 }}>Yeni nesil ekipmanlar, deneyimli antrenörler ve haftanın her günü süren grup dersleriyle 7/24 Fitness Club Bahçeşehir, gün içinde hangi saat sana uygunsa o saatte kapısını açık tutar.</p>
+            <p style={{ margin: 0, fontWeight: 600, fontSize: 'clamp(17px,1.4vw,21px)', lineHeight: 1.65 }}>Yeni nesil ekipmanlar, deneyimli antrenörler ve haftanın her günü süren grup dersleriyle 7/24 Fitness Club Bahçeşehir, Bahçeşehir'de modern ve kapsamlı bir antrenman deneyimi sunar.</p>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(min(100%,300px),1fr))', gap: 'clamp(20px,2.5vw,40px)' }}>
             {INTRO.map(([t, d, ph], i) => (
@@ -300,7 +300,7 @@ export default function Home() {
         <section style={{ background: '#F5F6F8', padding: 'clamp(72px,8vw,120px) clamp(16px,6vw,120px)', borderTop: '1px solid #ECEDF0' }}>
           <div style={{ maxWidth: 1300, margin: '0 auto' }}>
             <div style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 22, marginBottom: 56 }}>
-              <span style={{ fontWeight: 700, fontSize: 14, letterSpacing: '.2em', textTransform: 'uppercase' }}>7/24 Mobil Uygulama</span>
+              <span style={{ fontWeight: 700, fontSize: 14, letterSpacing: '.2em', textTransform: 'uppercase' }}>Mobil Uygulama</span>
               <h2 style={{ margin: 0, fontFamily: DISPLAY, fontWeight: 900, fontSize: 'clamp(40px,5vw,72px)', lineHeight: 1, textTransform: 'uppercase' }}>Kulübün cebinde!</h2>
               <a href="#" onClick={e => go('mobil', e)} className="btn btn--darkhover" style={{ ...pill, padding: '14px 34px', fontSize: 18, letterSpacing: '.06em' }}>Uygulamayı Keşfet</a>
             </div>
@@ -443,7 +443,7 @@ export default function Home() {
             <h2 style={{ margin: 0, fontFamily: DISPLAY, fontWeight: 900, fontSize: 'clamp(36px,5vw,64px)', lineHeight: 1, textTransform: 'uppercase' }}>Kulübe gel</h2>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}><span style={{ fontWeight: 700, fontSize: 12, letterSpacing: '.16em', textTransform: 'uppercase', color: RED }}>Adres</span><span style={{ fontSize: 18, lineHeight: 1.6 }}>Bahçeşehir 2. Kısım, Barış Sok. No:16, 34488 Başakşehir/İstanbul</span></div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}><span style={{ fontWeight: 700, fontSize: 12, letterSpacing: '.16em', textTransform: 'uppercase', color: RED }}>Telefon</span><a href="tel:4447243" style={{ fontFamily: DISPLAY, fontWeight: 900, fontSize: 40 }}>444 7 243</a></div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}><span style={{ fontWeight: 700, fontSize: 12, letterSpacing: '.16em', textTransform: 'uppercase', color: RED }}>Çalışma saatleri</span><span style={{ fontSize: 18 }}>7 gün 24 saat açık</span></div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}><span style={{ fontWeight: 700, fontSize: 12, letterSpacing: '.16em', textTransform: 'uppercase', color: RED }}>Çalışma saatleri</span><span style={{ fontSize: 18 }}>Haftanın her günü açık · Güncel saatler için: 444 7 243</span></div>
           </div>
           <iframe title="Harita" src="https://maps.google.com/maps?q=Bah%C3%A7e%C5%9Fehir%202.%20K%C4%B1s%C4%B1m%20Bar%C4%B1%C5%9F%20Sok.%20No%3A16%20Ba%C5%9Fak%C5%9Fehir%20%C4%B0stanbul&z=15&output=embed" style={{ width: '100%', minHeight: 420, border: 0, borderRadius: 12 }} loading="lazy"></iframe>
         </section>
